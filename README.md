@@ -1,2 +1,6 @@
-# sdl-rasterizer
-A very simple C &amp; SDL boilerplate to rasterize pixels on the screen (128x128)
+# A simple rasterizer written in C & SDL
+
+This is a simple initial boilerplate project that knows how to open a new OS window to draw pixels on a framebuffer.
+
+For more information, visit:
+[https://pikuma.com](https://pikuma.com)

@@ -11,12 +11,12 @@ static uint16_t window_width = 800;
 static uint16_t window_height = 800;
 
 bool create_window(void) {
-  if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-    fprintf(stderr, "Error initializing SDL.\n");
+  if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+    fprintf(stderr, "Error initializing SDL video.\n");
     return false;
   }
 
-  window = SDL_CreateWindow("Triangle rasterization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, 0);
+  window = SDL_CreateWindow("SDL Rasterizer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, 0);
   if (!window) {
     fprintf(stderr, "Error creating SDL window.\n");
     return false;
@@ -45,7 +45,7 @@ bool create_window(void) {
   return true;
 }
 
-void draw_pixel(uint8_t x, uint8_t y, uint32_t color) {
+void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) {
     return;
   }
@@ -64,7 +64,7 @@ void render_framebuffer(void) {
 }
 
 void clear_framebuffer(uint32_t color) {
-  for (uint16_t i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
+  for (size_t i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
     framebuffer[i] = color;
   }
 }

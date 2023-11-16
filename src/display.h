@@ -19,6 +19,6 @@ void fix_framerate(void);
 void clear_framebuffer(uint32_t color);
 void render_framebuffer(void);
 
-void draw_pixel(uint8_t x, uint8_t y, uint32_t color);
+void draw_pixel(uint16_t x, uint16_t y, uint32_t color);
 
 #endif

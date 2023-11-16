@@ -5,9 +5,6 @@
 #include "display.h"
 #include "vec2.h"
 
-#define MIN(a, b) (((a) < (b)) ? (a) : (b))
-#define MAX(a, b) (((a) > (b)) ? (a) : (b))
-
 bool is_running = false;
 
 vec2_t vertices[4] = {
@@ -33,10 +30,10 @@ void process_input(void) {
 
 void triangle_fill(vec2_t v0, vec2_t v1, vec2_t v2, uint32_t color) {
   // Finds the bounding box with all candidate pixels
-  int x_min = MIN(MIN(v0.x, v1.x), v2.x);
-  int y_min = MIN(MIN(v0.y, v1.y), v2.y);
-  int x_max = MAX(MAX(v0.x, v1.x), v2.x);
-  int y_max = MAX(MAX(v0.y, v1.y), v2.y);
+  int x_min = fmin(fmin(v0.x, v1.x), v2.x);
+  int y_min = fmin(fmin(v0.y, v1.y), v2.y);
+  int x_max = fmax(fmax(v0.x, v1.x), v2.x);
+  int y_max = fmax(fmax(v0.y, v1.y), v2.y);
 
   // Loop all candidate pixels inside the bounding box
   for (int y = y_min; y <= y_max; y++) {
